@@ -180,7 +180,8 @@ figure {
 
 .terminal-prompt::after {
     -webkit-animation: cursor 1s 2;
-        animation: cursor 1s 2;
+    animation: cursor 1s 2;
+    width: 10px;
 }
 
 .terminal-prompt::before {
