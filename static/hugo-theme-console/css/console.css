@@ -179,9 +179,8 @@ figure {
 }
 
 .terminal-prompt::after {
-    -webkit-animation: cursor 1s infinite;
-    animation: cursor 1s infinite;
-    width: 10px;
+    -webkit-animation: cursor 1s 2;
+        animation: cursor 1s 2;
 }
 
 .terminal-prompt::before {
