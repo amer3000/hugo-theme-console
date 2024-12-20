@@ -9,18 +9,35 @@ Console is a minimal, responsive and light theme for Hugo inspired by Linux cons
 
 <h1>Latest posts</h1>
 
-<div class="posts-list">
+{{/*  <div class="posts-list">
 {{ with .Site.GetPage "/posts" }}
-    {{ range first 3 (sort .Data.Pages "Date" "desc" (where .Pages ".Params.private" "!=" true))}}
-        <div class="post">
-            <p>
-                <div class="date">{{ .PublishDate.Format "Jan. 2, 2006" }}</div>
-                <h1><a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a></h1>
-                {{ .Summary }}
-            </p>
-        </div>
+    {{ range where .Site.RegularPages "Section" "posts" }}
+        {{ range first 3 (sort .Data.Pages "Date" "desc" (where .Pages ".Params.private" "!=" true))}}
+            <div class="post">
+                <p>
+                    <div class="date">{{ .PublishDate.Format "Jan. 2, 2006" }}</div>
+                    <h1><a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a></h1>
+                    {{ .Summary }}
+                </p>
+            </div>
+        {{ end }}
     {{ end }}
 {{ end }}
+</div>  */}}
+
+<div class="posts-list">
+  {{ $posts := where .Site.RegularPages "Section" "posts" }}
+  {{ $posts := where $posts ".Params.private" "!=" true }}
+  {{ $posts := sort $posts "Date" "desc" }}
+  {{ range first 3 $posts }}
+    <div class="post">
+      <p>
+        <div class="date">{{ .PublishDate.Format "Jan. 2, 2006" }}</div>
+        <h1><a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a></h1>
+        {{ .Summary }}
+      </p>
+    </div>
+  {{ end }}
 </div>
 
 <h1>Latest photos</h1>
